@@ -18,7 +18,11 @@ const useInView = (ref) => {
 store('namespace/example', {
 	callbacks: {
 		logInView: () => {
-			const { ref } = getElement();
+			const { ref, attributes } = getElement();
+
+			// `ref` is null here. For whatever reason I can access the `attributes` but the ref is null
+			console.log({ ref, attributes });
+
 			const isInView = useInView(ref);
 			useEffect(() => {
 				if (isInView) {
